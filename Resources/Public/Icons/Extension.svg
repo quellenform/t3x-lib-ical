@@ -1,0 +1,32 @@
+<svg width="156" height="156" version="1.1"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:cc="http://creativecommons.org/ns#"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <title>lib_t3</title>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>lib_t3</dc:title>
+        <dc:date>23.07.2023</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>quellenform@gmail.com</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>quellenform.at</dc:title>
+          </cc:Agent>
+        </dc:rights>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g transform="translate(-93.429 -345.79)">
+    <rect id="background" x="93.429" y="345.79" width="156" height="156" fill="#f80" />
+    <path id="shadow" transform="translate(93.429 345.79)" d="m99.375 34.975c-6.1234 0-14.408 1.8009-15.729 2.041v13.328l11.293 19.57h-0.79883l-19.537-33.859-38.979-0.054688-0.044922 0.054688h-12.004v14.529l17.062 29.562 0.22656 0.17578v39.779l20.732 35.898h94.402v-48.533l-36.945-64.168c-0.02117-0.036942-0.04112-0.074673-0.0625-0.11133l-0.11133-0.19141c-0.0037-0.00102-0.00802-9.35e-4 -0.01172-0.001953-3.5637-5.9132-10.02-8.0195-19.494-8.0195z" color="#000000" fill-opacity=".27451" />
+    <path id="icon" transform="translate(93.429 345.79)" d="m99.375 34.975c-6.1234 0-14.408 1.8009-15.729 2.041v13.328c3.4819-0.72039 8.8851-2.041 14.168-2.041 6.0033 0 8.4043 3.3613 8.4043 10.205 0 7.2039-2.7617 11.406-9.6055 11.406h-8.0449v13.088h9.2461c7.324 0 9.7246 3.9611 9.7246 13.326 0 7.4441-3.7212 11.527-9.4844 11.527-5.2829 0-12.128-1.4407-15.01-2.041v13.326c1.0806 0.24014 11.046 2.041 16.93 2.041 13.327 0 23.652-5.8837 23.652-26.055 0-11.886-3.8417-18.009-10.445-19.33 6.6036-2.2812 9.0059-9.7258 9.0059-16.93 0-18.37-7.4441-23.893-22.812-23.893zm-75.799 1.0801v14.529h17.289v69.518h16.449v-69.518h17.289v-14.529h-51.027z" fill="#fff" />
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+	<file source-language="en" datatype="plaintext" date="2023-07-23T11:59:00Z" product-name="lib_ical" target-language="nl">
+		<header />
+		<body>
+			<trans-unit id="extConf.slug" resname="extConf.slug" approved="yes">
+				<source>Specify the path segment to be used for the ical download.</source>
+				<target>Geef het padsegment op dat moet worden gebruikt voor de Ical-download.</target>
+			</trans-unit>
+			<trans-unit id="extConf.parameterName" resname="extConf.parameterName" approved="yes">
+				<source>Identifier of the URL parameter.</source>
+				<target>Identifier van de URL-parameter.</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
