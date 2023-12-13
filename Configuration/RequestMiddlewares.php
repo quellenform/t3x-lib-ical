@@ -9,7 +9,10 @@ return [
         'quellenform/libical' => [
             'target' => IcalRequest::class,
             'after' => [
-                'typo3/cms-redirects/redirecthandler',
+                'typo3/cms-frontend/authentication'
+            ],
+            'before' => [
+                'typo3/cms-redirects/redirecthandler'
             ]
         ]
     ]
