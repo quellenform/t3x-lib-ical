@@ -40,7 +40,7 @@ class Component
      *
      * @var string
      */
-    protected $attachment;
+    protected $attachment = '';
 
     /**
      * Categories
@@ -50,7 +50,7 @@ class Component
      *
      * @var array
      */
-    protected $categories;
+    protected $categories = [];
 
     /**
      * Classification
@@ -61,7 +61,7 @@ class Component
      *
      * @var string
      */
-    protected $classification;
+    protected $classification = '';
 
     /**
      * Comment
@@ -72,7 +72,7 @@ class Component
      *
      * @var string
      */
-    protected $comment;
+    protected $comment = '';
 
     /**
      * Description
@@ -83,7 +83,7 @@ class Component
      *
      * @var string
      */
-    protected $description;
+    protected $description = '';
 
     /**
      * Geographic Position
@@ -94,7 +94,7 @@ class Component
      *
      * @var array
      */
-    protected $geo;
+    protected $geo = [];
 
     /**
      * Location
@@ -105,7 +105,7 @@ class Component
      *
      * @var string
      */
-    protected $location;
+    protected $location = '';
 
     /**
      * Percent Complete
@@ -117,7 +117,7 @@ class Component
      *
      * @var int
      */
-    protected $percentComplete;
+    protected $percentComplete = 0;
 
     /**
      * Priority
@@ -127,7 +127,7 @@ class Component
      *
      * @var int
      */
-    protected $priority;
+    protected $priority = 0;
 
     /**
      * Resources
@@ -138,7 +138,7 @@ class Component
      *
      * @var string
      */
-    protected $resources;
+    protected $resources = '';
 
     /**
      * Status
@@ -159,7 +159,7 @@ class Component
      *
      * @var string
      */
-    protected $summary;
+    protected $summary = '';
 
     /**
      *
@@ -180,7 +180,7 @@ class Component
      *
      * @var int
      */
-    protected $completed;
+    protected $completed = 0;
 
     /**
      * Date-Time End
@@ -191,7 +191,7 @@ class Component
      *
      * @var int
      */
-    protected $dtend;
+    protected $dtend = 0;
 
     /**
      * Date-Time Due
@@ -202,7 +202,7 @@ class Component
      *
      * @var int
      */
-    protected $due;
+    protected $due = 0;
 
     /**
      * Date-Time Start
@@ -212,7 +212,7 @@ class Component
      *
      * @var int
      */
-    protected $dtstart;
+    protected $dtstart = 0;
 
     /**
      * Duration
@@ -222,7 +222,7 @@ class Component
      *
      * @var int
      */
-    protected $duration;
+    protected $duration = 0;
 
     /**
      * Free/Busy Time
@@ -232,7 +232,7 @@ class Component
      *
      * @var int
      */
-    protected $freebusy;
+    protected $freebusy = 0;
 
     /**
      * Time Transparency
@@ -243,7 +243,16 @@ class Component
      *
      * @var string
      */
-    protected $transp;
+    protected $transp = '';
+
+    /**
+     * All-day Event
+     *
+     * This property defines whether an event is an all-day event or not
+     *
+     * @var bool
+     */
+    protected $isAlldayEvent = false;
 
     /**
      *
@@ -264,7 +273,7 @@ class Component
      *
      * @var string
      */
-    protected $tzid;
+    protected $tzid = '';
 
     /**
      * Time Zone Name
@@ -275,7 +284,7 @@ class Component
      *
      * @var string
      */
-    protected $tzname;
+    protected $tzname = '';
 
     /**
      * Time Zone Offset From
@@ -286,7 +295,7 @@ class Component
      *
      * @var int
      */
-    protected $tzoffsetfrom;
+    protected $tzoffsetfrom = 0;
 
     /**
      * Time Zone Offset To
@@ -297,7 +306,7 @@ class Component
      *
      * @var int
      */
-    protected $tzoffsetto;
+    protected $tzoffsetto = 0;
 
     /**
      * Time Zone URL
@@ -309,7 +318,7 @@ class Component
      *
      * @var string
      */
-    protected $tzurl;
+    protected $tzurl = '';
 
     /**
      *
@@ -328,7 +337,7 @@ class Component
      *
      * @var string
      */
-    protected $attendee;
+    protected $attendee = '';
 
     /**
      * Contact
@@ -340,7 +349,7 @@ class Component
      *
      * @var string
      */
-    protected $contact;
+    protected $contact = '';
 
     /**
      * Organizer
@@ -350,7 +359,21 @@ class Component
      *
      * @var string
      */
-    protected $organizer;
+    protected $organizer = '';
+
+    /**
+     * Organizer Name
+     *
+     * @var string
+     */
+    protected $organizerName = '';
+
+    /**
+     * Organizer E-mail
+     *
+     * @var string
+     */
+    protected $organizerEmail = '';
 
     /**
      * Recurrence ID
@@ -364,7 +387,7 @@ class Component
      *
      * @var string
      */
-    protected $recurrenceId;
+    protected $recurrenceId = '';
 
     /**
      * Related To
@@ -375,7 +398,7 @@ class Component
      *
      * @var string
      */
-    protected $relatedTo;
+    protected $relatedTo = '';
 
     /**
      * Uniform Resource Locator
@@ -386,7 +409,7 @@ class Component
      *
      * @var string
      */
-    protected $url;
+    protected $url = '';
 
     /**
      * Unique Identifier
@@ -397,7 +420,7 @@ class Component
      *
      * @var string
      */
-    protected $uid;
+    protected $uid = '';
 
     /**
      *
@@ -417,7 +440,7 @@ class Component
      *
      * @var int
      */
-    protected $exdate;
+    protected $exdate = 0;
 
     /**
      * Recurrence Date-Times
@@ -429,7 +452,7 @@ class Component
      *
      * @var int
      */
-    protected $rdate;
+    protected $rdate = 0;
 
     /**
      * Recurrence Rule
@@ -441,7 +464,7 @@ class Component
      *
      * @var string
      */
-    protected $rrule;
+    protected $rrule = '';
 
     /**
      *
@@ -460,7 +483,7 @@ class Component
      *
      * @var string
      */
-    protected $action;
+    protected $action = '';
 
     /**
      * Repeat Count
@@ -471,7 +494,7 @@ class Component
      *
      * @var int
      */
-    protected $repeat;
+    protected $repeat = 0;
 
     /**
      * Trigger
@@ -481,7 +504,7 @@ class Component
      *
      * @var int
      */
-    protected $trigger;
+    protected $trigger = 0;
 
     /**
      *
@@ -503,7 +526,7 @@ class Component
      *
      * @var int
      */
-    protected $created;
+    protected $created = 0;
 
     /**
      * Date-Time Stamp
@@ -519,7 +542,7 @@ class Component
      *
      * @var int
      */
-    protected $dtstamp;
+    protected $dtstamp = 0;
 
     /**
      * Last Modified
@@ -533,7 +556,7 @@ class Component
      *
      * @var int
      */
-    protected $lastModified;
+    protected $lastModified = 0;
 
     /**
      * Sequence Number
@@ -544,12 +567,7 @@ class Component
      *
      * @var int
      */
-    protected $sequence;
-
-    /**
-     * @var bool
-     */
-    protected $isAlldayEvent;
+    protected $sequence = 0;
 
     /**
      * @return string
@@ -574,7 +592,7 @@ class Component
      */
     public function getDateStart(): int
     {
-        return $this->dateStart;
+        return $this->dtstart;
     }
 
     /**
@@ -584,7 +602,7 @@ class Component
      */
     public function setDateStart(int $dateStart): void
     {
-        $this->dateStart = $dateStart;
+        $this->dtstart = $dateStart;
     }
 
     /**
@@ -592,7 +610,7 @@ class Component
      */
     public function getDateEnd(): int
     {
-        return $this->dateEnd;
+        return $this->dtend;
     }
 
     /**
@@ -602,7 +620,7 @@ class Component
      */
     public function setDateEnd(int $dateEnd): void
     {
-        $this->dateEnd = $dateEnd;
+        $this->dtend = $dateEnd;
     }
 
     /**
