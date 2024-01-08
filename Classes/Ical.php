@@ -234,7 +234,7 @@ class Ical
             $body->write($ical);
             ob_clean();
             return (new Response())
-                ->withHeader('Contensssst-Type', 'text/calendar; charset=utf-8')
+                ->withHeader('Content-Type', 'text/calendar; charset=utf-8')
                 ->withHeader('Content-Disposition', 'attachment; filename="' . $this->filename . '.ics"')
                 ->withHeader('Cache-Control', 'no-cache, must-revalidate')
                 ->withHeader('Pragma', 'no-cache')
