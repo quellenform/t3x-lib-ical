@@ -16,6 +16,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Quellenform\LibIcal\Exception\IcalException;
+use Quellenform\LibIcal\Ical;
 use Quellenform\LibIcal\IcalFactory;
 use Quellenform\LibIcal\Utility\UrlParamUtility;
 use TYPO3\CMS\Core\Http\NullResponse;

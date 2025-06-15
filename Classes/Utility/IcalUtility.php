@@ -11,7 +11,7 @@ namespace Quellenform\LibIcal\Utility;
  * LICENSE.txt file that was distributed with this source code.
  */
 
-use \DateTime;
+use DateTime;
 
 /**
  * Class IcalUtility

@@ -11,8 +11,8 @@ namespace Quellenform\LibIcal;
  * LICENSE.txt file that was distributed with this source code.
  */
 
-use \DateTime;
-use \DateTimeZone;
+use DateTime;
+use DateTimeZone;
 use Quellenform\LibIcal\Domain\Model\Calendar;
 use Quellenform\LibIcal\Domain\Model\Component;
 use Quellenform\LibIcal\Utility\IcalUtility;

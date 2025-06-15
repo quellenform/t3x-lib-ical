@@ -11,7 +11,7 @@ namespace Quellenform\LibIcal;
  * LICENSE.txt file that was distributed with this source code.
  */
 
-use \InvalidArgumentException;
+use InvalidArgumentException;
 use Quellenform\LibIcal\Exception\IcalException;
 use TYPO3\CMS\Core\SingletonInterface;
 
