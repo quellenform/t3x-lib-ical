@@ -75,7 +75,7 @@ class IcalRegistry implements SingletonInterface
      */
     public function getProviderConfigurationByIdentifier(string $identifier): array
     {
-        // Throw execption if the given identifier is not registered
+        // Throw exception if the given identifier is not registered
         if (!isset($this->icalProviders[$identifier])) {
             throw new IcalException('iCal-Provider with identifier "' . $identifier . '" is not registered.');
         }

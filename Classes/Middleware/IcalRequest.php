@@ -32,7 +32,6 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class IcalRequest implements MiddlewareInterface
 {
-
     /**
      * Process an incoming server request
      *

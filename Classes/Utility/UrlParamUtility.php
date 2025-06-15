@@ -21,7 +21,6 @@ use TYPO3\CMS\Core\Utility\PathUtility;
  */
 class UrlParamUtility implements SingletonInterface
 {
-
     /**
      * Extension configuration
      *
