@@ -11,12 +11,16 @@ namespace Quellenform\LibIcal\ViewHelpers;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Psr\Http\Message\ServerRequestInterface;
 use Quellenform\LibIcal\Utility\UrlParamUtility;
 use TYPO3\CMS\Core\Context\Context;
+use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Core\Http\NormalizedParams;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\VersionNumberUtility;
 use TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper;
+use TYPO3\CMS\Fluid\Core\Rendering\RenderingContext;
 
 /**
  * A ViewHelper for creating iCal-URLs.
@@ -39,22 +43,19 @@ class LinkViewHelper extends AbstractTagBasedViewHelper
     protected $tagName = 'a';
 
     /**
-     * @var UriBuilder
-     */
-    protected $uriBuilder = null;
-
-    /**
      * Initialize arguments
      */
     public function initializeArguments(): void
     {
         parent::initializeArguments();
-        $this->registerUniversalTagAttributes();
-
+        if (version_compare(VersionNumberUtility::getCurrentTypo3Version(), '13', '>=')) {
+            // @extensionScannerIgnoreLine
+            $this->registerUniversalTagAttributes();
+        }
         $this->registerArgument('provider', 'string', 'The iCal-Provider', true);
-        $this->registerArgument('additionalParams', 'array', 'Additional query parameters', false, []);
-        $this->registerArgument('noCache', 'bool', 'Disable caching for the target page.', false, false);
-        $this->registerArgument('debug', 'bool', 'Display as raw data instead of downloading ical', false, false);
+        $this->registerArgument('additionalParams', 'array', 'Additional query parameters');
+        $this->registerArgument('noCache', 'bool', 'Disable caching for the target page.');
+        $this->registerArgument('debug', 'bool', 'Display as raw data instead of downloading ical');
     }
 
     /**
@@ -62,19 +63,24 @@ class LinkViewHelper extends AbstractTagBasedViewHelper
      */
     public function render(): string
     {
+        $request = null;
+        if (version_compare(VersionNumberUtility::getCurrentTypo3Version(), '13', '>=')) {
+            if ($this->renderingContext->hasAttribute(ServerRequestInterface::class)) {
+                $request = $this->renderingContext->getAttribute(ServerRequestInterface::class);
+            }
+        } else {
+            /** @var RenderingContext $renderingContext */
+            $renderingContext = $this->renderingContext;
+            // @extensionScannerIgnoreLine
+            $request = $renderingContext->getRequest();
+        }
+
         /** @var UrlParamUtility $extConf */
         $extConf = GeneralUtility::makeInstance(UrlParamUtility::class);
-
-        /** @var NormalizedParams $normalizedParams */
-        $normalizedParams = $this->getRequest();
-
-        /** @var bool $noCache */
-        $noCache = $this->arguments['noCache'];
-
-        /** @var string $parameterName */
+        $pageId = $this->getRootPageId();
+        $noCache = (bool) ($this->arguments['noCache'] ?? false);
         $parameterName = $extConf->getParameterName();
 
-        /** @var array $urlParams */
         $urlParams = [
             $parameterName => [
                 'provider' => $this->arguments['provider'],
@@ -83,7 +89,7 @@ class LinkViewHelper extends AbstractTagBasedViewHelper
                         array_merge(
                             $this->arguments['additionalParams'],
                             [
-                                'referrer' => $normalizedParams->getRequestUrl(),
+                                'referrer' => $this->getRequestUrl(),
                                 'L' => GeneralUtility::makeInstance(Context::class)->getAspect('language')->getId(),
                             ]
                         )
@@ -99,38 +105,54 @@ class LinkViewHelper extends AbstractTagBasedViewHelper
         /** @var string $uri */
         $uri = GeneralUtility::makeInstance(UriBuilder::class)
             ->reset()
-            ->setTargetPageUid($GLOBALS['TSFE']->rootLine[0]['uid'])
+            ->setRequest($request)
+            ->setTargetPageUid($pageId)
             ->setNoCache($noCache)
             ->setArguments($urlParams)
             ->setCreateAbsoluteUri(false)
             ->buildFrontendUri();
 
-        if (empty($uri)) {
-            return $this->renderChildren();
+        $content = (string) $this->renderChildren();
+        if ($uri === '') {
+            return $content;
         }
 
         // Set uri
         $uri = str_replace(
-            '/',
-            '/' . $extConf->getIcalSlug(),
+            '?',
+            $extConf->getIcalSlug() . '?',
             $uri,
         );
 
         $this->tag->addAttribute('href', $uri);
         $this->tag->addAttribute('rel', 'nofollow');
-        $this->tag->setContent($this->renderChildren());
+        $this->tag->setContent($content);
         $this->tag->forceClosingTag(true);
 
         return $this->tag->render();
     }
 
     /**
-     * Get normalized parameters from request.
+     * Get request url from normalized parameters.
      *
-     * @return \TYPO3\CMS\Core\Http\NormalizedParams
+     * @return string
      */
-    private function getRequest(): NormalizedParams
+    private function getRequestUrl(): string
     {
-        return $GLOBALS['TYPO3_REQUEST']->getAttribute('normalizedParams');
+        /** @var NormalizedParams $normalizedParams */
+        $normalizedParams = $GLOBALS['TYPO3_REQUEST']->getAttribute('normalizedParams');
+        return $normalizedParams->getRequestUrl();
+    }
+
+    /**
+     * Get root page id from Site object.
+     *
+     * @return int
+     */
+    private function getRootPageId(): int
+    {
+        /** @var Site $site */
+        $site = $GLOBALS['TYPO3_REQUEST']->getAttribute('site');
+        return $site->getRootPageId();
     }
 }
