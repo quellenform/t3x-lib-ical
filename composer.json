@@ -45,6 +45,9 @@
 	"extra": {
 		"typo3/cms": {
 			"extension-key": "lib_ical"
+		},
+		"branch-alias": {
+			"dev-main": "0.x-dev"
 		}
 	}
 }
