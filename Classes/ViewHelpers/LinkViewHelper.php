@@ -78,12 +78,16 @@ class LinkViewHelper extends AbstractTagBasedViewHelper
         $urlParams = [
             $parameterName => [
                 'provider' => $this->arguments['provider'],
-                'params' => array_merge(
-                    $this->arguments['additionalParams'],
-                    [
-                        'referrer' => $normalizedParams->getRequestUrl(),
-                        'L' => GeneralUtility::makeInstance(Context::class)->getAspect('language')->getId(),
-                    ]
+                'params' => base64_encode(
+                    json_encode(
+                        array_merge(
+                            $this->arguments['additionalParams'],
+                            [
+                                'referrer' => $normalizedParams->getRequestUrl(),
+                                'L' => GeneralUtility::makeInstance(Context::class)->getAspect('language')->getId(),
+                            ]
+                        )
+                    )
                 )
             ]
         ];

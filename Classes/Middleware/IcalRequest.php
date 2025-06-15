@@ -60,13 +60,13 @@ class IcalRequest implements MiddlewareInterface
 
             /** @var bool $debug */
             $debug = isset($icalRequest['debug']) ? boolval($icalRequest['debug']) : false;
-            /** @var array $params */
-            $params = isset($icalRequest['params']) && is_array($icalRequest['params']) ? $icalRequest['params'] : [];
+            /** @var ?array $params */
+            $params = isset($icalRequest['params']) ? json_decode(base64_decode($icalRequest['params']), true) : null;
             /** @var string $provider */
             $provider = isset($icalRequest['provider']) ? $icalRequest['provider'] : false;
 
             // Instantiate the iCal object and get data from requested iCal-provider
-            if (!empty($provider)) {
+            if (!empty($provider) && !empty($params)) {
                 /** @var ?Ical $calendar */
                 $calendar = GeneralUtility::makeInstance(IcalFactory::class)->queryProvider($provider, $params);
                 if ($calendar) {
