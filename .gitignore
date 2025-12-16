@@ -1,0 +1,13 @@
+.cache
+*.sh
+/.Build/*
+/.php-cs-fixer.cache
+/.vscode
+/Build/node_modules
+/Build/package-lock.json
+/Build/Scripts
+/composer.lock
+/Documentation-GENERATED/
+/Documentation/conf.py
+/Makefile
+/TODO.md
