@@ -5,7 +5,7 @@
     <body>
       <trans-unit id="download" resname="download">
         <source>Save into my calendar</source>
-        <target state="needs-translation">Save into my calendar</target>
+        <target state="translated">Mentés a naptáramba</target>
       </trans-unit>
     </body>
   </file>
